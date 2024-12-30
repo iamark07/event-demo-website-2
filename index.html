@@ -27,24 +27,46 @@
                 <nav class="hidden md:flex space-x-6 me-10">
                     <a href="#index.html" class="text-white text-lg hover:text-red-400 transition">Home</a>
                     <a href="#about" class="text-white text-lg hover:text-red-400 transition">About</a>
-                    <!-- <a href="#highlights" class="text-white text-lg hover:text-red-400 transition">Highlights</a>
-                    <a href="#gallery" class="text-white text-lg hover:text-red-400 transition">Gallery</a>
-                    <button class="text-white text-lg hover:text-red-400 transition" onclick="openRegister()">Register</button>
-                    <a href="#contact" class="text-white text-lg hover:text-red-400 transition">Contact</a> -->
+
+                    <!-- Services Dropdown (Desktop) -->
+                    <div class="relative group pb-2">
+                        <a href="#" class="text-white text-lg hover:text-red-400 transition">Services</a>
+                        <div
+                            class="absolute left-0 shadow-md top-full hidden space-y-2 bg-blue-500 text-white group-hover:block p-4 rounded-sm">
+                            <a href="#service1" class="block text-nowrap text-lg hover:text-red-400 transition">Service 1</a>
+                            <a href="#service2" class="block text-nowrap text-lg hover:text-red-400 transition">Service 2</a>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="text-white text-lg hover:text-red-400 transition">Contact</a>
                 </nav>
+
+                <!-- Mobile Menu Button -->
                 <button id="menuToggle" class="md:hidden text-white text-3xl">
                     <i class="ri-menu-line"></i>
                 </button>
             </div>
         </div>
+
         <!-- Mobile Menu -->
         <div id="mobileMenu"
             class="max-h-[0px] overflow-hidden pointer-events-none bg-blue-500 md:hidden transition-all duration-300">
             <nav class="flex flex-col space-y-4 text-center py-6">
+                <a href="#index.html" class="text-white hover:text-red-400 transition">Home</a>
                 <a href="#about" class="text-white hover:text-red-400 transition">About</a>
-                <a href="#highlights" class="text-white hover:text-red-400 transition">Highlights</a>
-                <a href="#gallery" class="text-white hover:text-red-400 transition">Gallery</a>
-                <button class="text-white hover:text-red-400 transition" onclick="openRegister()">Register</button>
+
+                <!-- Services Dropdown (Mobile) -->
+                <div class="relative">
+                    <button id="servicesToggle"
+                        class="text-white text-center hover:text-red-400 transition text-lg w-full text-left">
+                        Services
+                    </button>
+                    <div id="mobileDropdown" class="hidden shadow-md bg-white mt-2 space-y-2 bg-blue-500 text-white p-4 rounded-lg">
+                        <a href="#service1" class="block text-lg text-blue-500 hover:text-red-400 transition">Service 1</a>
+                        <a href="#service2" class="block text-lg text-blue-500 hover:text-red-400 transition">Service 2</a>
+                    </div>
+                </div>
+
                 <a href="#contact" class="text-white hover:text-red-400 transition">Contact</a>
             </nav>
         </div>
@@ -72,7 +94,8 @@
             <div class="flex flex-col lg:flex-row gap-10">
                 <!-- Left Side (Image) -->
                 <div class="lg:w-1/2 mb-8 lg:mb-0">
-                    <img src="assets/img/blog-recent-2.jpg" alt="Event Image" class="w-full h-auto rounded-lg shadow-lg">
+                    <img src="assets/img/blog-recent-2.jpg" alt="Event Image"
+                        class="w-full h-auto rounded-lg shadow-lg">
                 </div>
 
                 <!-- Right Side (About the Event) -->
@@ -126,10 +149,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 justify-center w-full gap-7 mt-12 px-4">
                 <img src="assets/img/blog-recent-4.jpg" alt="Gallery 1"
                     class="rounded shadow hover:scale-105 transition">
-                <img src="assets/img/blog-3.jpg" alt="Gallery 2"
-                    class="rounded shadow hover:scale-105 transition">
-                <img src="assets/img/blog-4.jpg" alt="Gallery 3"
-                    class="rounded shadow hover:scale-105 transition">
+                <img src="assets/img/blog-3.jpg" alt="Gallery 2" class="rounded shadow hover:scale-105 transition">
+                <img src="assets/img/blog-4.jpg" alt="Gallery 3" class="rounded shadow hover:scale-105 transition">
             </div>
         </div>
     </section>
@@ -162,10 +183,10 @@
 
 
     <!-- Enquiry Form -->
-    <section id="enquiry" class="bg-blue-500 text-white py-16">
+    <section id="contact" class="bg-blue-500 text-white py-16">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold">Contact Us</h2>
-            <form class="max-w-lg mx-auto mt-6 space-y-4">
+            <form class="max-w-lg mx-auto mt-6 space-y-4 px-10">
                 <input type="text" placeholder="Name"
                     class="w-full px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
                 <input type="email" placeholder="Email"
@@ -180,7 +201,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-blue-500 text-white py-10">
+    <footer class="bg-blue-500 text-white py-10">
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold">Stay Connected</h2>
             <p class="mt-4">Follow us on social media for the latest updates.</p>
@@ -199,6 +220,23 @@
 
     <!-- JavaScript for Header and Menu -->
     <script>
+
+
+        // Mobile Dropdown Toggle
+        document.getElementById('servicesToggle').addEventListener('click', function () {
+            const dropdown = document.getElementById('mobileDropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('max-h-[0px]');
+            mobileMenu.classList.toggle('max-h-[200px]'); // Adjust the height as needed
+            mobileMenu.classList.toggle('pointer-events-none');
+        });
+
+
         const header = document.getElementById("header");
         const headerContent = document.getElementById("headerContent");
         const menuToggle = document.getElementById("menuToggle");
